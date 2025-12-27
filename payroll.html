@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>INTERNAL PAYROLL SYSTEM — CONFIDENTIAL</title>
+<title>PAYROLL AUDIT CONSOLE — INTERNAL</title>
 
 <style>
 :root{
-  --bg:#0a0c0f;
-  --panel:#121722;
+  --bg:#090b10;
+  --panel:#11162a;
   --text:#e6e6e6;
   --muted:#9aa0a6;
-  --accent:#b33a3a;
+  --accent:#a92f2f;
 }
 
 body{
@@ -22,15 +22,15 @@ body{
 }
 
 .container{
-  max-width:1000px;
+  max-width:1100px;
   margin:auto;
   padding:40px 20px 80px;
 }
 
 .header{
   border:1px solid var(--accent);
-  background:rgba(179,58,58,0.05);
   padding:20px;
+  background:rgba(169,47,47,0.06);
   margin-bottom:30px;
 }
 
@@ -42,30 +42,34 @@ body{
 
 @keyframes flicker{
   0%,18%,22%,25%,53%,57%,100%{opacity:1}
-  20%,24%,55%{opacity:0.6}
+  20%,24%,55%{opacity:0.5}
 }
 
-.header p{color:var(--muted); margin:5px 0;}
+.header p{color:var(--muted); margin:6px 0;}
 
-table{
-  width:100%;
-  border-collapse:collapse;
+.audit{
   background:var(--panel);
+  border-left:4px solid var(--accent);
+  padding:20px;
+  margin-bottom:25px;
 }
 
-th,td{
-  padding:14px 12px;
-  border-bottom:1px solid #1f2535;
-  font-size:0.9rem;
+.audit h2{
+  margin:0 0 10px;
+  cursor:pointer;
 }
 
-th{
-  text-align:left;
+.meta{
+  font-size:0.8rem;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+
+.audit p{display:none;}
+
+.flag{
   color:var(--accent);
-}
-
-tr:hover{
-  background:#161c2c;
+  font-weight:bold;
 }
 
 .redacted{
@@ -76,27 +80,21 @@ tr:hover{
 
 .redacted:hover{color:var(--text);}
 
-.status{
-  font-size:0.75rem;
-  padding:4px 8px;
-  border:1px solid var(--accent);
-}
-
-#log{
-  margin-top:30px;
-  font-size:0.8rem;
-  background:#0d111a;
+#syslog{
+  margin-top:40px;
+  background:#0d1020;
   border:1px dashed var(--accent);
   padding:10px;
-  height:110px;
+  font-size:0.8rem;
+  height:130px;
   overflow-y:auto;
   color:var(--accent);
 }
 
 .footer{
   margin-top:50px;
-  font-size:0.8rem;
   text-align:center;
+  font-size:0.75rem;
   color:var(--muted);
 }
 </style>
@@ -106,97 +104,87 @@ tr:hover{
 <div class="container">
 
 <div class="header">
-  <h1>PAYROLL & COMPENSATION PORTAL</h1>
-  <p>INTERNAL USE ONLY — HR / FINANCE</p>
-  <p>Unauthorized access logged automatically.</p>
+  <h1>PAYROLL AUDIT CONSOLE</h1>
+  <p>Subsystem: Timekeeping / Compensation Reconciliation</p>
+  <p>Access Level Required: FIN-4</p>
 </div>
 
-<table>
-<thead>
-<tr>
-  <th>NAME</th>
-  <th>ROLE</th>
-  <th>PAY RATE</th>
-  <th>STATUS</th>
-  <th>NOTES</th>
-</tr>
-</thead>
+<div class="audit">
+  <h2>CROW</h2>
+  <div class="meta">PERIOD: Q3 | HOURS LOGGED: 214</div>
+  <p><span class="flag">FLAG:</span> Hours exceed approved allocation.</p>
+  <p>Override approved by <span class="redacted">████████</span>.</p>
+</div>
 
-<tbody>
-<tr>
-  <td>Crow</td>
-  <td>Operations Lead</td>
-  <td>$<span class="redacted">████</span>/hr</td>
-  <td><span class="status">ACTIVE</span></td>
-  <td>Present during irregular payroll cycles</td>
-</tr>
+<div class="audit">
+  <h2>LANDON</h2>
+  <div class="meta">PERIOD: Q3 | HOURS LOGGED: 188</div>
+  <p>No irregularities detected.</p>
+  <p>System access during audit window noted.</p>
+</div>
 
-<tr>
-  <td>Landon</td>
-  <td>Systems Support</td>
-  <td>$<span class="redacted">████</span>/hr</td>
-  <td><span class="status">ACTIVE</span></td>
-  <td>Manual adjustments approved</td>
-</tr>
+<div class="audit">
+  <h2>NATHAN</h2>
+  <div class="meta">PERIOD: Q3 | HOURS LOGGED: 203</div>
+  <p><span class="flag">FLAG:</span> Retroactive edits to timesheet.</p>
+  <p>Original entries marked <span class="redacted">██████</span>.</p>
+</div>
 
-<tr>
-  <td>Nathan</td>
-  <td>Logistics</td>
-  <td>$<span class="redacted">████</span>/hr</td>
-  <td><span class="status">ACTIVE</span></td>
-  <td>Delayed payments documented</td>
-</tr>
+<div class="audit">
+  <h2>SAGE</h2>
+  <div class="meta">PERIOD: Q3 | HOURS LOGGED: 176</div>
+  <p>Manual audit requested.</p>
+  <p>Recommendation not forwarded.</p>
+</div>
 
-<tr>
-  <td>Sage</td>
-  <td>Analysis</td>
-  <td>$<span class="redacted">████</span>/hr</td>
-  <td><span class="status">ACTIVE</span></td>
-  <td>Compensation review flagged</td>
-</tr>
+<div class="audit">
+  <h2>JACKSON</h2>
+  <div class="meta">PERIOD: Q3 | HOURS LOGGED: 92</div>
+  <p>Limited assignment hours.</p>
+  <p>Payroll view access denied.</p>
+</div>
 
-<tr>
-  <td>Jackson</td>
-  <td>Field Support</td>
-  <td>$<span class="redacted">████</span>/hr</td>
-  <td><span class="status">LIMITED</span></td>
-  <td>Partial access to payroll data</td>
-</tr>
-</tbody>
-</table>
-
-<div id="log">
-[01:42:18] Payroll system accessed<br>
-[01:42:26] Clearance mismatch detected<br>
+<div id="syslog">
+[00:12:41] Audit console accessed<br>
+[00:12:55] Payroll mismatch flagged<br>
 </div>
 
 <div class="footer">
-  <p>Payroll data subject to retroactive revision.</p>
-  <p>Some compensation entries intentionally withheld.</p>
+  <p>Audit results provisional.</p>
+  <p>Final approval pending executive review.</p>
 </div>
 
 </div>
 
 <script>
-// Fake payroll access log
-const log=document.getElementById("log");
+// Expand audit entries
+document.querySelectorAll(".audit h2").forEach(h=>{
+  h.addEventListener("click",()=>{
+    h.parentElement.querySelectorAll("p").forEach(p=>{
+      p.style.display = p.style.display==="block" ? "none":"block";
+    });
+  });
+});
+
+// Fake system log
+const log=document.getElementById("syslog");
 setInterval(()=>{
   const t=new Date().toLocaleTimeString();
   const e=[
-    "Payslip viewed",
-    "Unauthorized hover detected",
-    "Rate field accessed",
-    "Audit trail updated",
-    "HR override recorded"
+    "Timesheet opened",
+    "Unauthorized review detected",
+    "Audit flag acknowledged",
+    "System integrity check passed",
+    "Finance override logged"
   ];
   log.innerHTML+=`[${t}] ${e[Math.floor(Math.random()*e.length)]}<br>`;
   log.scrollTop=log.scrollHeight;
-},9000);
+},8000);
 
 // Console leak
-console.log("PAYROLL NOTICE:");
-console.log("These figures were never finalized.");
-console.log("Someone published a draft.");
+console.log("AUDIT TRACE:");
+console.log("Some discrepancies were intentional.");
+console.log("This console was never meant to be public.");
 </script>
 
 </body>
