@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>STAFF TERMINAL — INTERNAL</title>
+
+<style>
+body {
+  margin: 0;
+  background: #050608;
+  color: #d6d6d6;
+  font-family: monospace;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.header {
+  border: 1px solid #8f2e2e;
+  padding: 16px;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  margin: 0;
+  color: #b33636;
+}
+
+.header p {
+  margin: 6px 0;
+  font-size: 0.9rem;
+  color: #9a9a9a;
+}
+
+.entry {
+  border-left: 4px solid #8f2e2e;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  background: #0c0f15;
+}
+
+.entry h2 {
+  margin: 0;
+  cursor: pointer;
+  color: #e2e2e2;
+}
+
+.meta {
+  font-size: 0.8rem;
+  color: #8a8a8a;
+  margin: 6px 0 10px;
+}
+
+.entry p {
+  display: none;
+  font-size: 0.9rem;
+}
+
+.redacted {
+  background: #000;
+  color: #000;
+  padding: 2px 6px;
+}
+
+.redacted:hover {
+  color: #d6d6d6;
+}
+
+.log {
+  margin-top: 30px;
+  font-size: 0.75rem;
+  padding: 12px;
+  border: 1px dashed #8f2e2e;
+  background: #07090e;
+  color: #b33636;
+  height: 120px;
+  overflow-y: auto;
+}
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+
+<div class="header">
+  <h1>INTERNAL STAFF TERMINAL</h1>
+  <p>ACCESS LEVEL REQUIRED: STAFF-3</p>
+  <p>THIS INTERFACE WAS NOT APPROVED FOR EXTERNAL USE</p>
+</div>
+
+<div class="entry">
+  <h2>CROW</h2>
+  <div class="meta">ROLE: OPERATIONS</div>
+  <p>Assigned to oversight during irregular activity periods.</p>
+  <p>Frequently present when records become <span class="redacted">███████</span>.</p>
+</div>
+
+<div class="entry">
+  <h2>LANDON</h2>
+  <div class="meta">ROLE: SYSTEMS</div>
+  <p>Maintains backend stability.</p>
+  <p>Has requested access beyond assigned clearance.</p>
+</div>
+
+<div class="entry">
+  <h2>NATHAN</h2>
+  <div class="meta">ROLE: LOGISTICS</div>
+  <p>Handles internal transfers.</p>
+  <p>Several delivery timestamps do not align.</p>
+</div>
+
+<div class="entry">
+  <h2>SAGE</h2>
+  <div class="meta">ROLE: ANALYSIS</div>
+  <p>Identifies inconsistencies across departments.</p>
+  <p>Reports frequently archived without response.</p>
+</div>
+
+<div class="entry">
+  <h2>JACKSON</h2>
+  <div class="meta">ROLE: FIELD SUPPORT</div>
+  <p>Limited system access.</p>
+  <p>Unaware of higher-level operations.</p>
+</div>
+
+<div class="log" id="log">
+[00:04:11] Terminal initialized<br>
+[00:04:19] External connection detected<br>
+</div>
+
+</div>
+
+<script>
+// Expand entries
+document.querySelectorAll(".entry h2").forEach(h => {
+  h.onclick = () => {
+    h.parentElement.querySelectorAll("p").forEach(p => {
+      p.style.display = p.style.display === "block" ? "none" : "block";
+    });
+  };
+});
+
+// Fake log activity
+const log = document.getElementById("log");
+setInterval(() => {
+  const t = new Date().toLocaleTimeString();
+  const e = [
+    "Staff record opened",
+    "Unauthorized review logged",
+    "Clearance verified",
+    "Session integrity check",
+    "External observer detected"
+  ];
+  log.innerHTML += `[${t}] ${e[Math.floor(Math.random() * e.length)]}<br>`;
+  log.scrollTop = log.scrollHeight;
+}, 7000);
+
+// Console message
+console.log("TERMINAL NOTICE:");
+console.log("This interface was not meant to be discovered.");
+console.log("Someone wants these names seen.");
+</script>
+
+</body>
+</html>
+
