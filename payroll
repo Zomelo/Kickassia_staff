@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INTERNAL PAYROLL SYSTEM — CONFIDENTIAL</title>
+
+<style>
+:root{
+  --bg:#0a0c0f;
+  --panel:#121722;
+  --text:#e6e6e6;
+  --muted:#9aa0a6;
+  --accent:#b33a3a;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Courier New, monospace;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:40px 20px 80px;
+}
+
+.header{
+  border:1px solid var(--accent);
+  background:rgba(179,58,58,0.05);
+  padding:20px;
+  margin-bottom:30px;
+}
+
+.header h1{
+  margin:0;
+  color:var(--accent);
+  animation:flicker 2s infinite alternate;
+}
+
+@keyframes flicker{
+  0%,18%,22%,25%,53%,57%,100%{opacity:1}
+  20%,24%,55%{opacity:0.6}
+}
+
+.header p{color:var(--muted); margin:5px 0;}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:var(--panel);
+}
+
+th,td{
+  padding:14px 12px;
+  border-bottom:1px solid #1f2535;
+  font-size:0.9rem;
+}
+
+th{
+  text-align:left;
+  color:var(--accent);
+}
+
+tr:hover{
+  background:#161c2c;
+}
+
+.redacted{
+  background:black;
+  color:black;
+  padding:2px 6px;
+}
+
+.redacted:hover{col
